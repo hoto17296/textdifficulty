@@ -1,12 +1,12 @@
 require 'bundler/setup'
 require 'sinatra/base'
 require 'json'
-require './stringdepth'
+require './textdifficulty'
 
-class StringDepthApp < Sinatra::Base
+class TextDifficultyApp < Sinatra::Base
   get '/' do
     str = params.key?('str') ? params['str'] : ''
-    depth = StringDepth.new.depth str
-    { str: str, depth: depth }.to_json
+    dfc = TextDifficulty.new.difficulty str
+    { str: str, difficulty: dfc }.to_json
   end
 end

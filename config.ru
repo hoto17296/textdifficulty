@@ -1,3 +1,3 @@
 require './app'
 
-run StringDepthApp
+run TextDifficultyApp

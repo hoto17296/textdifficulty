@@ -1,12 +1,11 @@
 require 'RMagick'
 
-class StringDepth
+class TextDifficulty
 
   attr_accessor :cache, :font, :size
 
   def initialize(csv=nil)
     load_cache csv
-    #@font = "/Library/Fonts/ヒラギノ角ゴ\ Pro\ w6.OTF"
     @font = "ipag.ttf"
     @size = 100
   end
@@ -22,8 +21,12 @@ class StringDepth
     end
   end
 
+  def difficulty(str)
+    0xFFFF - depth(str)
+  end
+
   def depth(str)
-    return 0 if str.length == 0
+    return 0xFFFF if str.length == 0
     sum = 0
     str.chars do |chr|
       sum += depth_chr chr
@@ -52,7 +55,7 @@ class StringDepth
         ave += image.pixel_color(x, y).red
       end
     end
-    depth = 65535 - ave / @size ** 2
+    depth = ave / @size ** 2
 
     @cache[chr] = depth
     return depth
