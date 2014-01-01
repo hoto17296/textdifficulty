@@ -1,7 +1,7 @@
 require 'bundler/setup'
 require 'sinatra/base'
 require 'json'
-require './font'
+require './stringdepth'
 
 class StringDepthApp < Sinatra::Base
   get '/' do
