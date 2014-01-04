@@ -10,7 +10,7 @@ class TextDifficultyApp < Sinatra::Base
     str = params.key?('str') ? params['str'] : ''
     td = TextDifficulty.new
     dfc = td.difficulty str
-    level = td.level dcf
+    level = td.level dfc
     data = { str: str, difficulty: dfc, level: level }
     jsonp data
   end
