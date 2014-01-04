@@ -61,5 +61,13 @@ class TextDifficulty
     return depth
   end
 
+  def level(dif)
+    threshold = [ 10099, 10872, 11415 ]
+    threshold.each_with_index do |n,i|
+      return i if dif < n
+    end
+    return 3
+  end
+
 end
 
